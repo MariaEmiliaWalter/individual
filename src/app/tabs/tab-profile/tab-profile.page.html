@@ -10,11 +10,12 @@
       <ion-item>
         <ion-thumbnail slot="start">
           <ion-img src="{{img_url}}"
-            alt="The Wisconsin State Capitol building in Madison, WI at night"
-            onIonImgDidLoad="updateImg()"
-            ></ion-img>
+            alt="Imagen de perfil"
+            >
+          </ion-img>
         </ion-thumbnail>
-        <ion-label>Selecciona una imagen de perfil</ion-label>
+        <ion-input type="file" (change)="uploadImg($event)">
+        </ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>

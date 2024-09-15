@@ -32,8 +32,6 @@ export class FormsPage implements OnInit {
   toastMessage: string = '';
   genericForm!: FormGroup;
   user!: { email: string ; password: string; name: string; lastname: string; };
-  img_url!: String;
-
 
   constructor(
     protected formBuilder: FormBuilder,
