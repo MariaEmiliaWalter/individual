@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonCard, IonCardContent, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonThumbnail, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { FormsPage } from 'src/app/components/forms/forms.page';
 
 @Component({
@@ -11,11 +10,13 @@ import { FormsPage } from 'src/app/components/forms/forms.page';
   styleUrls: ['./tab-profile.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule,
-    FormsPage
+    FormsPage,IonCard,IonCardContent,IonItem, IonThumbnail,IonLabel,IonImg
    ]
 })
 export class TabProfilePage implements OnInit {
 
+  img_url : string = "https://docs-demo.ionic.io/assets/madison.jpg";
+  
   constructor() { }
 
   ngOnInit() {

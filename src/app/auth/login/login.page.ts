@@ -74,7 +74,6 @@ export class LoginPage implements OnInit {
     this.authService.login(formValues.email!, formValues.password!)
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           if (resp.valueOf()) {
             this.router.navigateByUrl('');
           }else{

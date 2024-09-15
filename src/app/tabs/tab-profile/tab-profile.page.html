@@ -5,5 +5,17 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <app-forms></app-forms>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img src="{{img_url}}"
+            alt="The Wisconsin State Capitol building in Madison, WI at night"
+            onIonImgDidLoad="updateImg()"
+            ></ion-img>
+        </ion-thumbnail>
+        <ion-label>Selecciona una imagen de perfil</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-

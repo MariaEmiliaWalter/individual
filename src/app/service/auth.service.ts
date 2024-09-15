@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { Observable, last, of } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,11 +10,16 @@ export class AuthService {
   private isLogged = false;
   private readonly EMAIL: string = "eemi.walter@gmail.com";
   private readonly PASSWORD: string = "12345";
-  public user! : {
+  public user : {
     email: string ;
     password: string;
     name: string;
     lastname: string;
+  } = {
+    email : "email dummy",
+    password: "pass dummy",
+    name: "name dummy",
+    lastname: "lastname dummy"
   };
 
   constructor(private router: Router){ }
@@ -41,17 +46,25 @@ export class AuthService {
   }
 
   getUser(){
+    console.log("entre a getUser")
+    console.log(this.isLogged)
     if(this.isLogged){
-      this.user.email = this.EMAIL
+      this.user.email = "eemi.walter@gmail.com";
       this.user.password = this.PASSWORD; 
-      this.user.name = "";
-      this.user.lastname = "";    
-    }else{
-      this.user.email = "";
-      this.user.password = "";    
-      this.user.name = "";
-      this.user.lastname = "";    
     }
     return this.user;  
+  }
+
+  updateUser(
+    password: string,
+    name: string,
+    lastname: string
+  ){
+    this.user = {
+      email : this.user.email,
+      password: password,
+      name: name,
+      lastname: lastname
+    }
   }
 }

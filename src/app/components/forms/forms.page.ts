@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonThumbnail, IonTitle, IonToast, IonToolbar } from '@ionic/angular/standalone';
-import { Router, RouterLink } from '@angular/router';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonTitle, IonToast, IonToolbar } from '@ionic/angular/standalone';
 
 import { AuthService } from 'src/app/service/auth.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -22,8 +22,7 @@ import { CommonModule } from '@angular/common';
     RouterLink,
     IonToast,
     IonInput,
-    ReactiveFormsModule,
-    IonThumbnail
+    ReactiveFormsModule
   ]
 })
 export class FormsPage implements OnInit {
@@ -32,7 +31,9 @@ export class FormsPage implements OnInit {
   isToastOpen: boolean = false;
   toastMessage: string = '';
   genericForm!: FormGroup;
-  user!: { email: string; password: string; name: string; lastname: string; };
+  user!: { email: string ; password: string; name: string; lastname: string; };
+  img_url!: String;
+
 
   constructor(
     protected formBuilder: FormBuilder,
@@ -40,45 +41,34 @@ export class FormsPage implements OnInit {
   ) {
   }
 
-/* 
-ERROR: 
-vendor.js:69541 ERROR RuntimeError: NG01052: formGroup expects a FormGroup instance. Please pass one in.
-
-      Example:
-
-      
-  <div [formGroup]="myGroup">
-    <input formControlName="firstName">
-  </div>
-
-  In your class:
-
-  this.myGroup = new FormGroup({
-      firstName: new FormControl()
-  }); */
-
-  
   ngOnInit(): void {
-    this.user = this.authService.getUser();
-    console.log(this.user); //rompe cuando va a buscar el get user.
+    this.user = this.authService.getUser();  //rompe cuando va a buscar el get user.
     if (this.authService.isLoggedIn()) {
       this.title = "Editar usuario"
     }
     this.genericForm = this.formBuilder.group({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
-      img: new FormControl('', Validators.required),
+      password: new FormControl(this.user.password, Validators.required),
+      name: new FormControl(this.user.name, Validators.required),
+      lastname: new FormControl(this.user.name, Validators.required),
     });
+
   }
 
+
   onSubmit() {
+    const formValues = this.genericForm.getRawValue();
+    this.authService.updateUser(
+      formValues.password,
+      formValues.name,
+      formValues.lastname);
     console.log("registro exitoso")
   }
 
   setToastOpen(bol: boolean) {
     this.isToastOpen = bol
   }
-
+  
+  updateValue(key: string ,value: string) {
+    this.genericForm.get(key)?.setValue(value);
+  }
 }
