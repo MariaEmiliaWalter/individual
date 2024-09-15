@@ -1,13 +1,24 @@
 import { Routes } from '@angular/router';
+import { TabsPage } from './tabs/tabs.page';
+import { isSignIn } from './guards/isSignIn';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: 'auth',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage)
   },
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    //canActivate: [isSignIn],
+    loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+  },
+  {
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  },
+  {
+    path: 'forms',
+    loadComponent: () => import('./components/forms/forms.page').then( m => m.FormsPage)
   },
 ];
