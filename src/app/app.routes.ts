@@ -9,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    //canActivate: [isSignIn],
+    canActivate: [isSignIn],
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {
