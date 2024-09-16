@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, NavController } from '@ionic/angular/standalone';
 
 import { CommonModule } from '@angular/common';
 import { FormsPage } from 'src/app/components/forms/forms.page';
 import { ReactiveFormsModule } from '@angular/forms';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, ReactiveFormsModule, FormsPage ]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, ReactiveFormsModule, FormsPage, IonBackButton ]
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage{
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+  ) { 
   }
+
 
 }

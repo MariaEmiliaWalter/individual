@@ -20,9 +20,5 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full'
-  },
-  {
-    path: 'forms',
-    loadComponent: () => import('./components/forms/forms.page').then( m => m.FormsPage)
   }
 ];

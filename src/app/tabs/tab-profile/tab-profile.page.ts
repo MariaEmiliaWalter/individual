@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IonCard, IonCardContent, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonThumbnail, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
-import { AuthService } from 'src/app/service/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsPage } from 'src/app/components/forms/forms.page';
 import { MediaService } from './../../service/media.service';
