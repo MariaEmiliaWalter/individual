@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IonCard, IonCardContent, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonThumbnail, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 import { AuthService } from 'src/app/service/auth.service';
@@ -22,7 +22,7 @@ export class TabProfilePage implements OnInit {
   constructor(
     private mediaService : MediaService
   ) { }
-
+  
   ngOnInit(): void {
     this.img_url = this.mediaService.getImg();
   }
@@ -31,7 +31,5 @@ export class TabProfilePage implements OnInit {
     const file = event.target.files[0]
     await this.mediaService.uploadImg(file);
     this.img_url = this.mediaService.getImg();
-    console.log(this.img_url)
   }
-  
 }

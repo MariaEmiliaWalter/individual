@@ -15,8 +15,8 @@ export class MediaService {
         return this.img_previsualizacion
     }
 
-    uploadImg(file: any): any {
-        this.extraerBase64(file).then((img: any) => {
+    async uploadImg(file: any): Promise<any> {
+        await this.extraerBase64(file).then((img: any) => {
             this.img_previsualizacion = img.base;
         })
         console.log(this.img_previsualizacion)

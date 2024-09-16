@@ -8,6 +8,10 @@ export const routes: Routes = [
     loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage)
   },
   {
+    path: 'register',
+    loadComponent: () => import('./auth/register/register.page').then( m => m.RegisterPage)
+  },
+  {
     path: '',
     canActivate: [isSignIn],
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
@@ -20,5 +24,5 @@ export const routes: Routes = [
   {
     path: 'forms',
     loadComponent: () => import('./components/forms/forms.page').then( m => m.FormsPage)
-  },
+  }
 ];

@@ -2,10 +2,11 @@
     <ion-card-content>
       <form [formGroup]="genericForm" (ngSubmit)="onSubmit()"  *ngIf="this.genericForm">
         <ion-item>
-          <ion-input label="Email" labelPlacement="floating" id="email" type="email" [disabled]="true" [value]="user.email"></ion-input>
+          <ion-input *ngIf="this.url == 'register'" label="Email" labelPlacement="floating" id="email" type="email" formControlName="email"></ion-input>
+          <ion-input *ngIf="this.url != 'register'" label="Email" labelPlacement="floating" id="email" type="email" [disabled]="true" [value]="user.email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Contrasena" labelPlacement="floating" formControlName="password" id="password" type="password" [clearInput]="true" ></ion-input>
+          <ion-input label="Contraseña" labelPlacement="floating" formControlName="password" id="password" type="password" [clearInput]="true" ></ion-input>
         </ion-item>
 
         <ion-item>
